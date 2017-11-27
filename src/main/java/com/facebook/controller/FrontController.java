@@ -1,5 +1,7 @@
 package com.facebook.controller;
 
+import java.security.Principal;
+
 import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
@@ -32,5 +34,15 @@ public class FrontController {
 		model.addAttribute("NameSpace",appdetails.getNamespace());
 		model.addAttribute("WebSite URL",appdetails.getWebsiteURL());
 		return "facebookInfo";
+	}
+	
+	@RequestMapping(value="/home", method=RequestMethod.GET)
+	public String getAdminHome(){
+		return "administrator";
+	}
+	
+	@RequestMapping(value="/userInfo", method=RequestMethod.POST)
+	public Principal getUser(Principal principal){
+		return principal;
 	}
 }
